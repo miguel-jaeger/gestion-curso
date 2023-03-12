@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Gestión de cursos</h1>
+    <ul>
+        {% for c in listado %}
+        <li>{{c.nombre}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
