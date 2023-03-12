@@ -4,5 +4,5 @@ from .models import Curso
 
 # Create your views here.
 def home(request):
-    cursos= Curso.objects.all()
-    return render(request, "gestionCurso.html", {"listado":cursos})
+    listadoCursos= Curso.objects.all()
+    return render(request, "gestionCurso.html", {"cursos":listadoCursos})
