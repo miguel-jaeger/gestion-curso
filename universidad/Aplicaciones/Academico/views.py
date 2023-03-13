@@ -21,7 +21,7 @@ def addCurso(request):
 
 
 def editCurso(request,codigo):
-    curso= Curso.objects.get(codigo=codigo)    
+    curso= Curso.objects.get(id=codigo)    
     return render(request,"edicionCurso.html",{"curso":curso}) 
 
 
@@ -29,8 +29,9 @@ def editCursoPost(request):
     codigo=request.POST['codigo']
     nombre=request.POST['nombre']
     credito=request.POST['creditos']
+    id=request.POST['id']
 
-    curso= Curso.objects.get(codigo=codigo)
+    curso= Curso.objects.get(id=id)
     curso.nombre=nombre
     curso.creditos=credito
     curso.save()
@@ -39,7 +40,7 @@ def editCursoPost(request):
 
 
 def deleteCurso(request,codigo):
-    curso= Curso.objects.get(codigo=codigo)
+    curso= Curso.objects.get(id=codigo)
     curso.delete()
     return redirect("/")
 
