@@ -3,8 +3,8 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-md-4 offset-md-4">
-        <h1>Editando Curso: {{curso.nombre}}</h1>
+    <div class="col-md-6 offset-md-3">
+        <h1>Editando: {{curso.nombre}}</h1>
         <div class="card">
             <div class="card-body">
                 <form action="/editaCurso/" method="post">
@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <input type="text" id="creditos" value="{{curso.creditos}}" name="creditos" class="form-control" placeholder="Créditos" required minlength="1" maxlength="9">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group acciones">
                         <button type="submit" class="btn btn-success btn-block text-white" >Salvar</button>
                         <a href="/" id="cancel" name="cancel" class="btn btn-danger">Cancel</a>
                     </div>
