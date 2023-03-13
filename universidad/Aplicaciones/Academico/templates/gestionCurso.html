@@ -35,6 +35,7 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Creditos</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@
                             <td>{{c.codigo}}</td>
                             <td>{{c.nombre}}</td>
                             <td>{{c.creditos}}</td>
+                            <td><a href="editarCurso/{{c.codigo}}" class="btn btn-info">Editar</a> | <a href="eliminarCurso/{{c.codigo}}" class="btn btn-danger">Eliminar</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
