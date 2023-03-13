@@ -3,32 +3,21 @@
 
 {% block body %}
 
-<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-    <h1>Gestión de Curso</h1>
-    <div class="card">
-        <div class="card-body">
-            <form action="registrarCurso/" method="post">
+    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
+        <h1>Listado de Cursos</h1>
+        <div class="table-responsive">    
+            <form action="buscar" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <input type="text" id="codigo" name="codigo" class="form-control" placeholder="Código" required>
-                </div>  
-                <div class="form-group">  
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required maxlength="50">
+                    <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Nombre" >
                 </div>
                 <div class="form-group">
-                    <input type="text" id="creditos" name="creditos" class="form-control" placeholder="Créditos" required minlength="1" maxlength="9">
+                    <button type="submit" class="btn btn-success btn-block text-white" >Buscar</button>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block text-white" >Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <h1>Listado de Cursos</h1>
-        <div class="table-responsive">            
+            </form>   
+            <div class="form-group">
+                <a href="registrar" class="btn btn-success btn-block text-white" >Crear </a>
+            </div>     
             <table class="table table-striped">
                 <thead>
                     <tr>
