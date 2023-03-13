@@ -14,3 +14,28 @@ def addCurso(request):
 
     Curso.objects.create(codigo=codigo,nombre=nombre,creditos=credito)
     return redirect("/")
+
+
+def editCurso(request,codigo):
+    curso= Curso.objects.get(codigo=codigo)    
+    return render(request,"edicionCurso.html",{"curso":curso}) 
+
+
+def editCursoPost(request):
+    codigo=request.POST['codigo']
+    nombre=request.POST['nombre']
+    credito=request.POST['creditos']
+
+    curso= Curso.objects.get(codigo=codigo)
+    curso.nombre=nombre
+    curso.creditos=credito
+    curso.save()
+    return redirect("/")
+
+
+
+def deleteCurso(request,codigo):
+    curso= Curso.objects.get(codigo=codigo)
+    curso.delete()
+    return redirect("/")
+
