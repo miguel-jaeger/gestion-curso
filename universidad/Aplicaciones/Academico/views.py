@@ -46,5 +46,5 @@ def deleteCurso(request,codigo):
 def buscarCurso(request):
     buscar = request.POST['buscar']
     filter = Curso.objects.filter(nombre__contains = buscar)
-    return render(request, "gestionCurso.html", {"cursos":filter})
+    return render(request, "gestionCurso.html", {"cursos":filter,"criterio":buscar})
 
