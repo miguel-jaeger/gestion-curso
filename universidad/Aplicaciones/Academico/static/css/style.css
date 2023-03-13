@@ -1,3 +1,44 @@
 h1{
     color: blue;
 }
+
+.buscador{
+    margin: 10px;
+}
+.buscador input, .buscador button{
+    display: inline-block;
+}
+
+.buscador input{
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-form-control-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.addCurso, .acciones{
+    float: right;
+    margin: 10px 0 10px 0;
+}
+
+svg{
+    height: 32px;
+    width: 32px;
+}
+
+.form-group input{
+    margin: 5px;
+}
+
+.red{
+    color:red;
+}
