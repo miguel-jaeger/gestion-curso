@@ -7,6 +7,10 @@ def home(request):
     listadoCursos= Curso.objects.all()
     return render(request, "gestionCurso.html", {"cursos":listadoCursos})
 
+def addCursoF(request):
+    return render(request, "adicionarCurso.html")
+
+
 def addCurso(request):
     codigo=request.POST['codigo']
     nombre=request.POST['nombre']
@@ -38,4 +42,9 @@ def deleteCurso(request,codigo):
     curso= Curso.objects.get(codigo=codigo)
     curso.delete()
     return redirect("/")
+
+def buscarCurso(request):
+    buscar = request.POST['buscar']
+    filter = Curso.objects.filter(nombre__contains = buscar)
+    return render(request, "gestionCurso.html", {"cursos":filter})
 
