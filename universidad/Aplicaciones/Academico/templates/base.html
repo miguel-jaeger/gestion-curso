@@ -8,6 +8,9 @@
     <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/bootstrap.css.map' %}" rel="stylesheet">
     <link href="{% static '/css/style.css' %}" rel="stylesheet">
+    
+    <!-- Datatable-->
+    <link href="{% static '/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet">
     <title>{% block titulo %}{% endblock %}</title>
 </head>
 <body>
@@ -50,9 +53,17 @@
     </div>
 
 </body>
+<!-- Bootstrap 5-->
 <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static '/js/bootstrap.bundle.min.js.map' %}"></script>
 <script src="{% static '/js/bootstrap.bundle.js.map' %}"></script>
+
+<!--jquery -->
 <script src="{% static '/js/jquery-3.6.4.min.js' %}"></script>
 <script src="{% static '/js/gestionCurso.js' %}"></script>
+
+<!--DataTable-->
+<!--DataTable-->
+<script src="{% static '/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/js/dataTables.bootstrap5.min.js' %}"></script>
 </html>
