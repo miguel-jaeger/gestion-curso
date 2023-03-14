@@ -1,12 +1,13 @@
-
-.buscador{
+.buscador {
     margin: 10px;
 }
-.buscador input, .buscador button{
+
+.buscador input,
+.buscador button {
     display: inline-block;
 }
 
-.buscador input{
+.buscador input {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -19,27 +20,36 @@
     -moz-appearance: none;
     appearance: none;
     border-radius: 0.375rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.addCurso, .acciones{
+.addCurso,
+.acciones {
     float: right;
     margin: 10px 0 10px 0;
 }
 
-.addCurso svg{
+.addCurso svg {
     float: right;
 }
 
-svg{
+svg {
     height: 32px;
     width: 32px;
 }
 
-.form-group input{
+.form-group input {
     margin: 5px;
 }
 
-.red{
-    color:red;
+.btnEliminacion svg {
+    color: #dc3545;
+    width: 24px;
+    height: 24px;
+}
+
+.btnEdicion svg {
+    color: #198754;
+    width: 24px;
+    height: 24px;
 }
