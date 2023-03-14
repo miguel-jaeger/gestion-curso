@@ -14,11 +14,18 @@ def addCursoF(request):
 
 
 def addCurso(request):
+
     try:
         # código de inserción aquí
         codigo = request.POST['codigo']
         nombre = request.POST['nombre']
         credito = request.POST['creditos']
+
+        if(not credito.isnumeric()):
+            return render(request, "adicionarCurso.html",{"error":"El campo creditos debe ser entero positivo"})
+            
+        credito=int(credito)
+        
 
         Curso.objects.create(codigo=codigo, nombre=nombre, creditos=credito)
         return redirect("/")
@@ -26,8 +33,7 @@ def addCurso(request):
         if 'UNIQUE constraint failed' in str(e):
         # manejo de excepción de campo único duplicado aquí
             return render(request, "adicionarCurso.html",{"error":"Ya existe ese código"})
-        else: "Field 'creditos' expected a number but got" in str(e)
-        return render(request, "adicionarCurso.html",{"error":"El campo creditos debe ser entero"})
+        
     #except Exception as e:
      #   return render(request, "adicionarCurso.html",{"error":"otro error"})
 
