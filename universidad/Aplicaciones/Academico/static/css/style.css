@@ -27,6 +27,10 @@
     margin: 10px 0 10px 0;
 }
 
+.addCurso svg{
+    float: right;
+}
+
 svg{
     height: 32px;
     width: 32px;
