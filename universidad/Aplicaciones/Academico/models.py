@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+# create comment to prove merge command
 class Curso(models.Model):
     #codigo = models.CharField(max_length=60, unique=True)
     #codigo = models.CharField(primary_key=True, max_length=6)
