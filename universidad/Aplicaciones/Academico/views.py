@@ -44,16 +44,31 @@ def editCurso(request, codigo):
 
 
 def editCursoPost(request):
-    codigo = request.POST['codigo']
-    nombre = request.POST['nombre']
-    credito = request.POST['creditos']
-    id = request.POST['id']
 
-    curso = Curso.objects.get(id=id)
-    curso.nombre = nombre
-    curso.creditos = credito
-    curso.save()
-    return redirect("/")
+    try:
+        id = request.POST['id']
+        curso = Curso.objects.get(id=id)
+        codigo = request.POST['codigo']
+        nombre = request.POST['nombre']
+        credito = request.POST['creditos']
+        
+
+        if(not credito.isnumeric()):
+                return render(request, "edicionCurso.html",{"curso": curso,"error":"El campo creditos debe ser entero positivo"})
+
+        credito=int(credito)
+       
+        curso.nombre = nombre
+        curso.creditos = credito
+        curso.save()
+        return redirect("/")
+
+    except IntegrityError as e:
+        id = request.POST['id']
+        curso = Curso.objects.get(id=id)
+        if 'UNIQUE constraint failed' in str(e):
+        # manejo de excepción de campo único duplicado aquí
+            return render(request, "edicionCurso.html",{"curso": curso,"error":"Ya existe ese código"})
 
 
 def deleteCurso(request, codigo):
