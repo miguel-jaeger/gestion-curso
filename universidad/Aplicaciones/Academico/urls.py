@@ -12,6 +12,7 @@ urlpatterns = [
     path('buscar', views.buscarCurso),
     path('autenticar',views.autenticar),
     path('registrarUsuario',views.registrarF),
+    path('registrarUsuarioForm',views.registrarUsuario),
     path('autenticar',views.autenticar),
     path('listadoUsuarios',views.listadoUsuarios),
     path('eliminarUsuario/<codigo>',views.eliminaUsuario),
