@@ -27,25 +27,37 @@
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                       </li>
+                      {% if user.is_authenticated  %}
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="cursos">Cursos</a>
                       </li>
+                      {% endif %}
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Usuario
                         </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu">                       
+                          
+                          {% if user.is_authenticated  %}
+                          <li><a class="dropdown-item" href="/listadoUsuarios">Listado de usuarios</a></li>                        
+                          {% else %}
+                          <li><a class="dropdown-item" href="/autenticar">Registrar</a></li>
+                          {% endif %}
+                          
                         </ul>
                       </li>
                     </ul>
                   </div>
+                  {% if user.is_authenticated  %}
+                  <p style="color: #fff;">                    
+                   Bienvenido: <b>{{user}} | <a href="/salir">Salir</a></b>
+                    </p>
+                  {% endif %}
                 </div>
               </nav>
         </div>
         <div class="row">
+          {{msg}}
             {% block body %}{% endblock  %}
         </div>
 
