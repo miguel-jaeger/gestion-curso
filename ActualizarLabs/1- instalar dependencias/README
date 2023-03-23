@@ -1,0 +1,5 @@
+1- Dar permiso de ejecucion al fichero update_env
+    >> sudo chmod +x update_env
+
+2- Correr el update_env
+    >> ./update_env

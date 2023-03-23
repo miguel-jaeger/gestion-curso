@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo touch /etc/apt/sources.list.d/ucinovarepo.list
+echo "deb http://novarepo.uci.cu/nova 2021 principal extendido" | sudo tee -a /etc/apt/sources.list.d/ucinovarepo.list
+sudo apt-get update && sudo apt-get install -y python3-pip python3-venv
+sudo rm -rf /etc/apt/sources.list.d/ucinovarepo.list
