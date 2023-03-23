@@ -4,21 +4,23 @@ from django.db import IntegrityError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def home(request):   
     return render(request, "inicio.html")
 
+@login_required
 def cursos(request):
     listadoCursos = Curso.objects.all()
     return render(request, "gestionCurso.html", {"cursos": listadoCursos})
 
-
+@login_required
 def addCursoF(request):
     return render(request, "adicionarCurso.html")
 
-
+@login_required
 def addCurso(request):
 
     try:
@@ -43,12 +45,12 @@ def addCurso(request):
     #except Exception as e:
      #   return render(request, "adicionarCurso.html",{"error":"otro error"})
 
-
+@login_required
 def editCurso(request, codigo):
     curso = Curso.objects.get(id=codigo)
     return render(request, "edicionCurso.html", {"curso": curso})
 
-
+@login_required
 def editCursoPost(request):
 
     try:
@@ -76,17 +78,18 @@ def editCursoPost(request):
         # manejo de excepción de campo único duplicado aquí
             return render(request, "edicionCurso.html",{"curso": curso,"error":"Ya existe ese código"})
 
-
+@login_required
 def deleteCurso(request, codigo):
     curso = Curso.objects.get(id=codigo)
     curso.delete()
     return redirect("/")
 
-
+@login_required
 def buscarCurso(request):
     buscar = request.POST['buscar']
     filter = Curso.objects.filter(nombre__contains=buscar)
     return render(request, "gestionCurso.html", {"cursos": filter, "criterio": buscar})
+
 
 def registrarF(request):
     
@@ -124,12 +127,13 @@ def registrarUsuario(request):
             else:
                 return render(request, "registroUsuario.html", {"error": "Las contraseñas no coinciden"})
 
+@login_required
 def listadoUsuarios(request):
 
     listadoUsuarios = User.objects.all()
     return render(request, "listadoUsuarios.html", {"usuarios": listadoUsuarios})
 
-
+@login_required
 def eliminaUsuario(request, codigo):
     usuario = User.objects.get(id=codigo)
     usuario.delete()
