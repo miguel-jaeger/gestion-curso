@@ -1,0 +1,19 @@
+1. Configura un entorno virtual
+# Crear el entorno virtual
+py -m venv venv (windows)
+virtualenv venv
+# Activar el ambiente virtual
+.\venv\Scripts\activate (windows)
+source venv/bin/activate
+
+2. Instalar las frameworks / librerías
+pip install django djangorestframework djangorestframework-simplejwt django-model-utils
+
+3. El siguiente paso es crear un nuevo proyecto de Django
+django-admin startproject project
+
+4. pip freeze > requirements.txt
+
+5. crear app
+python manage.py startapp api
+
