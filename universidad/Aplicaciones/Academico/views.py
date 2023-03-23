@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Curso
 from django.db import IntegrityError
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
 
 
 # Create your views here.
-def home(request):
+def home(request):   
+    return render(request, "inicio.html")
+
+def cursos(request):
     listadoCursos = Curso.objects.all()
     return render(request, "gestionCurso.html", {"cursos": listadoCursos})
 
@@ -81,3 +87,51 @@ def buscarCurso(request):
     buscar = request.POST['buscar']
     filter = Curso.objects.filter(nombre__contains=buscar)
     return render(request, "gestionCurso.html", {"cursos": filter, "criterio": buscar})
+
+def registrarF(request,codigo=""):
+    
+    if request.method=='GET':
+        return render(request, "registro.html",{"form":UserCreationForm})
+    else:
+        if len(request.POST['password2'])>0:
+            print('dfsdfsdff')
+            if request.POST['password1']==request.POST['password2']:
+                try:
+                        # registrar usuario
+                    user=User.objects.create_user(username=request.POST['username'],password=request.POST['password1'],email=request.POST['email'])
+                    user.save()
+                    login(request,user)
+                    return redirect("/listadoUsuarios",{"msg":"Usuario registrado satisfactoriamente"})
+                except:
+                    return render(request, "registro.html", {"form": UserCreationForm, "error": "El usuario ya existe"})
+            
+            else:
+                 return render(request, "registro.html", {"form": UserCreationForm, "error": "Las contraseñas no coinciden"})
+
+def listadoUsuarios(request):
+
+    listadoUsuarios = User.objects.all()
+    return render(request, "listadoUsuarios.html", {"usuarios": listadoUsuarios})
+
+
+def eliminaUsuario(request, codigo):
+    usuario = User.objects.get(id=codigo)
+    usuario.delete()
+    return redirect("/listadoUsuarios")
+
+def salir(request):
+    logout(request)
+    return redirect("/")
+
+def autenticar(request):
+    
+    if request.method=='GET':
+        return render(request, "registro.html")
+    else:
+        user = authenticate(request,username=request.POST['username'],password=request.POST['password1'])
+        if user is None:
+            return render(request, "registro.html",{"error":"Usuario o password incorrectoa"})
+        else:
+            login(request,user)
+            return redirect("/")
+        
