@@ -88,25 +88,41 @@ def buscarCurso(request):
     filter = Curso.objects.filter(nombre__contains=buscar)
     return render(request, "gestionCurso.html", {"cursos": filter, "criterio": buscar})
 
-def registrarF(request,codigo=""):
+def registrarF(request):
     
     if request.method=='GET':
-        return render(request, "registro.html",{"form":UserCreationForm})
+        return render(request, "registro.html")
     else:
-        if len(request.POST['password2'])>0:
-            print('dfsdfsdff')
             if request.POST['password1']==request.POST['password2']:
                 try:
-                        # registrar usuario
+                    #registrar usuario
                     user=User.objects.create_user(username=request.POST['username'],password=request.POST['password1'],email=request.POST['email'])
                     user.save()
                     login(request,user)
                     return redirect("/listadoUsuarios",{"msg":"Usuario registrado satisfactoriamente"})
                 except:
-                    return render(request, "registro.html", {"form": UserCreationForm, "error": "El usuario ya existe"})
+                    return render(request, "registro.html", {"error": "El usuario ya existe"})
             
             else:
-                 return render(request, "registro.html", {"form": UserCreationForm, "error": "Las contraseñas no coinciden"})
+                return render(request, "registro.html", {"error": "Las contraseñas no coinciden"})
+
+def registrarUsuario(request):
+    
+    if request.method=='GET':
+        return render(request, "registroUsuario.html")
+    else:
+            if request.POST['password1']==request.POST['password2']:
+                try:
+                    #registrar usuario
+                    user=User.objects.create_user(username=request.POST['username'],password=request.POST['password1'],email=request.POST['email'])
+                    user.save()
+                    login(request,user)
+                    return redirect("/listadoUsuarios",{"msg":"Usuario registrado satisfactoriamente"})
+                except:
+                    return render(request, "registroUsuario.html", {"error": "El usuario ya existe"})
+            
+            else:
+                return render(request, "registroUsuario.html", {"error": "Las contraseñas no coinciden"})
 
 def listadoUsuarios(request):
 
