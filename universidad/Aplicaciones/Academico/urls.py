@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls import handler404
+
 
 urlpatterns = [
     path('', views.home,name="home"),
@@ -18,4 +20,8 @@ urlpatterns = [
     path('eliminarUsuario/<codigo>',views.eliminaUsuario,name="eliminarUsuario"),
     path('editarUsuario/<codigo>',views.registrarF,name="editarUsuario"),
     path('salir/',views.salir,name="salir"),
+
 ]
+
+handler404 = 'Aplicaciones.Academico.views.error_404_view'
+
