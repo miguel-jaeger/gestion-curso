@@ -133,7 +133,7 @@ def listadoUsuarios(request):
     listadoUsuarios = User.objects.all()
     return render(request, "listadoUsuarios.html", {"usuarios": listadoUsuarios})
 
-@login_required
+
 def eliminaUsuario(request, codigo):
     usuario = User.objects.get(id=codigo)
     usuario.delete()
@@ -155,3 +155,7 @@ def autenticar(request):
             login(request,user)
             return redirect("/")
         
+
+def error_404_view(request, exception):    
+    
+    return render(request,'404.html')
