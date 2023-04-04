@@ -8,7 +8,7 @@
         <h1>Editando: {{curso.nombre}}</h1>
         <div class="card">
             <div class="card-body">
-                <form action="/editaCurso/" method="post">
+                <form  method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="text" id="codigo" value="{{curso.codigo}}" name="codigo" class="form-control" placeholder="Código" readonly>
