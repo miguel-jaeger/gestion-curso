@@ -3,7 +3,7 @@
 
 {% block body %}
 <div class="row">
-   
+  
 
     <ul class="nav nav-tabs col-md-6 offset-md-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -27,7 +27,8 @@
                             </div>  
                             <div class="form-group">  
                                 <input type="password" id="password1" name="password1" class="form-control" placeholder="Contraseña" required maxlength="50">
-                            </div>                                                     
+                            </div>
+                            <input name="id" type="hidden" value="">                                                    
                             <button class="btn btn-success btn-block text-white">Autenticar</button>
                             <a href="/" id="cancel" name="cancel" class="btn btn-danger">Cancel</a>
                         </form>
@@ -41,7 +42,7 @@
                 <h1>Adicionar usuario</h1>
                 <div class="card">
                     <div class="card-body">          
-                        <form  method="post" action="registrarUsuario">
+                        <form  method="post" action="/usuario">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required>
