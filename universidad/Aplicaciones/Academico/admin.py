@@ -10,3 +10,4 @@ class CursoAdmin(admin.ModelAdmin):
     search_fields = ['codigo', 'nombre']
     # inlines = [NoteInline]
     # autocomplete_fields = ['nombre']
+
