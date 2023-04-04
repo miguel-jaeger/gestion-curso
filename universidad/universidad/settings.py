@@ -24,7 +24,7 @@ TEMPLATE_DIR=Path(BASE_DIR,'templates')
 SECRET_KEY = 'django-insecure-4!8bl(b$uu8!vqtp2hgxuab1=$t5wdp0*we9li+^e-&jh5pw=*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -82,6 +82,19 @@ DATABASES = {
     }
 }
 
+
+#Si usamos MySQL como gestor de BD 
+
+"""DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'taller-autos',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
