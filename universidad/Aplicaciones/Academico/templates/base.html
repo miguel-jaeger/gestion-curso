@@ -29,7 +29,7 @@
                       </li>
                       {% if user.is_authenticated  %}
                         <li class="nav-item">
-                        <a class="nav-link" href="cursos">Cursos</a>
+                        <a class="nav-link" href="/cursos">Cursos</a>
                       </li>
                       {% endif %}
                       <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                         <ul class="dropdown-menu">                       
                           
                           {% if user.is_authenticated  %}
-                          <li><a class="dropdown-item" href="/listadoUsuarios">Listado de usuarios</a></li>                        
+                          <li><a class="dropdown-item" href="{% url 'listadoUsuarios' %}">Listado de usuarios</a></li>                        
                           {% else %}
                           <li><a class="dropdown-item" href="/autenticar">Registrar</a></li>
                           {% endif %}
